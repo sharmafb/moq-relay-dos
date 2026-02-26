@@ -526,12 +526,10 @@ Within a single MoQT session:
 
 Across multiple MoQT sessions:
 
-: Flow control on one session does not prevent
-  a slow subscriber on that session
-  from causing resource accumulation
-  that affects other sessions at the same relay.
-  A relay must manage cross-session resource allocation
-  independently.
+: QUIC flow control is per session; a slow client can still
+  cause the relay to accumulate buffered data, reducing the relay’s
+  available memory and degrading service for other sessions. A relay
+  must manage cross-session resource allocation independently.
 
 MoQT does not currently provide
 per-subscription resource isolation.
